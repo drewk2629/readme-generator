@@ -23,13 +23,13 @@ if(licenseBadge.length === 0) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license.includes('Apache 2.0 License')) {
-    return '[![License: ${license}](https://opensource.org/licenses/Apache-2.0)';
+    return '[Documentation](https://opensource.org/licenses/Apache-2.0)';
   }
   if (license.includes('Creative Commons Zero v1.0 Universal')) {
-    return '[![License: ${license}](https://creativecommons.org/publicdomain/zero/1.0/)';
+    return '[Documentation](https://creativecommons.org/publicdomain/zero/1.0/)';
   }
   if (license.includes('Eclipse Public License 2.0')) {
-    return '[![License: ${license}](https://www.eclipse.org/legal/epl-2.0/)';
+    return '[Documentation](https://www.eclipse.org/legal/epl-2.0/)';
   }
   else {
     return '';
@@ -39,12 +39,11 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license == 'none') {
-    return '';
-  }
-  else {
-    return `${renderLicenseLink(license)}
-  ${renderLicenseBadge(license)}`;
+  if (license == "None") {
+    return "";
+  } else {
+    return `${renderLicenseLink(license)}  
+    ${renderLicenseBadge(license)}`;
   }
 }
 
@@ -68,6 +67,7 @@ function generateMarkdown(data) {
   ${data.usage}
   ## License 
   ${data.license}
+  ${renderLicenseLink(data.license)}
   ## Contributers 
   ${data.contributers}
   ## Testing 
